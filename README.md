@@ -1,6 +1,6 @@
-# myapp_flutter
+# Beers
 
-A new Flutter project.
+A new Flutter project. Showing beers from [Punk Api](https://punkapi.com/documentation/v2).
 
 ## Getting Started
 
