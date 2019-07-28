@@ -32,11 +32,77 @@ class BeerScreenState extends State<BeerScreen> {
         title: Text(widget.beerName),
       ),
       body: Container(
+        padding: EdgeInsets.all(24.0),
         child: FutureBuilder<Beer>(
           future: beer,
           builder: (context, snapshot) {
+            final beer = snapshot.data;
             if (snapshot.hasData) {
-              return Text(snapshot.data.name);
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(bottom: 40),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(bottom: 8),
+                                child: Text(
+                                  beer.name,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              Text(beer.tagline),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Image.network(
+                            beer.imageUrl,
+                            width: 80,
+                            height: 80,
+                          ),
+                          margin: EdgeInsets.only(left: 16.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      'Description',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 24),
+                    child: Text(beer.description),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      'Tips',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Text(beer.brewersTips),
+                ],
+              );
             }
             if (snapshot.hasError) {
               return Center(child: Text("${snapshot.error}"));
