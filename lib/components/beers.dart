@@ -44,9 +44,8 @@ class _BeersScreenState extends State<BeersScreen> {
                             title: Text(beer.name),
                             subtitle: Text(beer.tagline),
                             onTap: () {
-                              print("tapped ${beer.name}");
-                              Application.router.navigateTo(
-                                  context, "/beer/${beer.id}?name=${beer.name}",
+                              Application.router.navigateTo(context,
+                                  "/beer/${beer.id}?name=${Uri.encodeComponent(beer.name)}",
                                   transition: TransitionType.native);
                             },
                           ),
