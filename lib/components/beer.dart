@@ -87,8 +87,9 @@ class BeerScreenState extends State<BeerScreen> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: 24),
-                    child: Text(beer.description),
+                    margin: EdgeInsets.only(bottom: 32),
+                    child:
+                        Text(beer.description, style: TextStyle(height: 1.25)),
                   ),
                   Container(
                     margin: EdgeInsets.only(bottom: 8),
@@ -100,7 +101,7 @@ class BeerScreenState extends State<BeerScreen> {
                       ),
                     ),
                   ),
-                  Text(beer.brewersTips),
+                  Text(beer.brewersTips, style: TextStyle(height: 1.25)),
                 ],
               );
             }
